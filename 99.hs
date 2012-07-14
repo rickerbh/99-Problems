@@ -32,3 +32,10 @@ reverse' :: [a] -> [a]
 reverse' [] = []
 reverse' (x:xs) = reverse' xs ++ [x]
 
+-- Problem 6
+isPalindrome :: (Eq a) => [a] -> Bool
+isPalindrome [] = True
+isPalindrome [x] = True
+isPalindrome (x:xs)
+    | x == head (reverse xs) = isPalindrome (tail (reverse xs))
+    | otherwise = False
