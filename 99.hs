@@ -59,3 +59,8 @@ pack (x:xs)
     | elem x (head (pack xs)) = (x:(head (pack xs))):(tail (pack xs))
     | otherwise = [x]:(pack xs)
 
+-- Problem 10
+encode :: (Eq a) => [a] -> [(Int, a)]
+encode [] = error "Can't encode an empty list"
+encode [x] = [(1, x)]
+encode xs = [(n, y) | (y:ys) <- (pack xs), let n = 1 + (length ys)]
