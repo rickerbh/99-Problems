@@ -77,3 +77,10 @@ encode xs = [(n, y) | (y:ys) <- (pack xs), let n = 1 + (length ys)]
 dupli :: [a] -> [a]
 dupli [] = []
 dupli (x:xs) = x:x:dupli xs
+
+-- Problem 15
+repli :: (Num b, Ord b) => [a] -> b -> [a]
+repli [] _ = []
+repli _ 0 = []
+repli [x] n = x:repli [x] (n - 1)
+repli (x:xs) n = [x] ++ repli' [x] (n - 1) ++ repli' xs (n)
