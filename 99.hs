@@ -39,3 +39,16 @@ isPalindrome [x] = True
 isPalindrome (x:xs)
     | x == head (reverse xs) = isPalindrome (tail (reverse xs))
     | otherwise = False
+
+-- Problem 7
+-- Nested lists are not a native datatype - I'll have to learn how to define my own datatype before I tackle this.
+
+-- Problem 8
+compress :: (Eq a) => [a] -> [a]
+compress [] = []
+compress [x] = [x]
+compress (x:xs)
+    | x == head (xs) = compress xs
+    | otherwise = [x] ++ compress xs
+    
+-- Problem 9
