@@ -52,3 +52,10 @@ compress (x:xs)
     | otherwise = [x] ++ compress xs
     
 -- Problem 9
+pack :: (Eq a) => [a] -> [[a]]
+pack [] = []
+pack [x] = [[x]]
+pack (x:xs)
+    | elem x (head (pack xs)) = (x:(head (pack xs))):(tail (pack xs))
+    | otherwise = [x]:(pack xs)
+
