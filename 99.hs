@@ -63,3 +63,17 @@ pack (x:xs)
 encode :: (Eq a) => [a] -> [(Int, a)]
 encode [] = error "Can't encode an empty list"
 encode xs = [(n, y) | (y:ys) <- (pack xs), let n = 1 + (length ys)]
+
+-- Problem 11
+-- I'll have to learn how to define my own datatype before I tackle this.
+
+-- Problem 12
+-- I'll have to learn how to define my own datatype before I tackle this.
+
+-- Problem 13
+-- I'll have to learn how to define my own datatype before I tackle this.
+
+-- Problem 14
+dupli :: [a] -> [a]
+dupli [] = []
+dupli (x:xs) = x:x:dupli xs
