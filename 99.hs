@@ -83,4 +83,4 @@ repli :: (Num b, Ord b) => [a] -> b -> [a]
 repli [] _ = []
 repli _ 0 = []
 repli [x] n = x:repli [x] (n - 1)
-repli (x:xs) n = [x] ++ repli' [x] (n - 1) ++ repli' xs (n)
+repli (x:xs) n = [x] ++ repli [x] (n - 1) ++ repli xs (n)
