@@ -84,3 +84,28 @@ repli [] _ = []
 repli _ 0 = []
 repli [x] n = x:repli [x] (n - 1)
 repli (x:xs) n = [x] ++ repli [x] (n - 1) ++ repli xs (n)
+
+-- Problem 16
+
+-- Problem 17
+-- Could use splitAt but that would be cheating
+--split xs n = splitAt n xs
+-- Not really happy with this answer (I think "take" is considered a predefined predicate). 
+-- A recursive version would be nice.
+split :: [a] -> Int -> ([a], [a])
+split xs n =
+    let firstPart = take n xs
+        secondPart = reverse (take ((length xs) - n) (reverse xs))
+    in (firstPart, secondPart)
+
+split' :: [a] -> Int -> ([a], [a])
+split' xs 0 = ([], xs)
+
+-- Problem 18
+slice :: (Eq b, Num b) => [a] -> b -> b -> [a]
+slice [] _ _ = []
+slice _ 0 _ = error "List starts at 1"
+slice _ 1 0 = []
+slice (x:xs) 1 n = [x] ++ slice xs 1 (n - 1)
+slice (x:xs) i n = slice xs (i - 1) (n - 1)
+
