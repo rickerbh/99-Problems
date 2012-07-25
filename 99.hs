@@ -109,3 +109,9 @@ slice _ 1 0 = []
 slice (x:xs) 1 n = [x] ++ slice xs 1 (n - 1)
 slice (x:xs) i n = slice xs (i - 1) (n - 1)
 
+-- Problem 19
+rotate :: [a] -> Int -> [a]
+rotate xs n
+  | n < 0 = rotate xs (length xs + n)
+  | otherwise = reverse (take ((length xs) - n) (reverse xs)) ++ take n xs
+
