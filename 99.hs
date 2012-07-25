@@ -115,3 +115,11 @@ rotate xs n
   | n < 0 = rotate xs (length xs + n)
   | otherwise = reverse (take ((length xs) - n) (reverse xs)) ++ take n xs
 
+-- Problem 20
+
+-- Problem 21
+insertAt :: a -> [a] -> Int -> [a]
+insertAt y (x:xs) n
+  | n == 1 = [y] ++ [x] ++ xs
+  | otherwise = [x] ++ insertAt y xs (n - 1)
+
