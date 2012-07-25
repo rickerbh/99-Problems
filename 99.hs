@@ -123,3 +123,9 @@ insertAt y (x:xs) n
   | n == 1 = [y] ++ [x] ++ xs
   | otherwise = [x] ++ insertAt y xs (n - 1)
 
+-- Problem 22
+range :: Int -> Int -> [Int]
+range x y
+  | x > y = error "First operand must be less than or equal to the second"
+  | x == y = [y]
+  | otherwise = [x] ++ range (x + 1) y
