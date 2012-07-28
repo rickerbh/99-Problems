@@ -113,6 +113,13 @@ rotate xs n
   | otherwise = reverse (take ((length xs) - n) (reverse xs)) ++ take n xs
 
 -- Problem 20
+removeAt :: Int -> [b] -> (b, [b])
+removeAt n xs = (removed n xs, rest n xs)
+    where
+      removed 1 (x:xs) = x
+      removed n (x:xs) = removed (n - 1) xs
+      rest 1 (x:xs) = xs
+      rest n (x:xs) = [x] ++ rest (n - 1) xs
 
 -- Problem 21
 insertAt :: a -> [a] -> Int -> [a]
