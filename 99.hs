@@ -41,7 +41,11 @@ isPalindrome (x:xs)
     | otherwise = False
 
 -- Problem 7
--- Nested lists are not a native datatype - I'll have to learn how to define my own datatype before I tackle this.
+data NestedList a = Elem a | List [NestedList a]
+flatten :: NestedList a -> [a]
+flatten (Elem x) = [x]
+flatten (List []) = []
+flatten (List (x:xs)) = flatten x ++ flatten (List xs)
 
 -- Problem 8
 compress :: (Eq a) => [a] -> [a]
