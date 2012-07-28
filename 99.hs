@@ -86,6 +86,13 @@ repli [x] n = x:repli [x] (n - 1)
 repli (x:xs) n = [x] ++ repli [x] (n - 1) ++ repli xs (n)
 
 -- Problem 16
+dropEvery :: [a] -> Int -> [a]
+dropEvery xs n = dropEvery' xs n 1
+    where
+      dropEvery' [] _ _ = []
+      dropEvery' (x:xs) n c
+        | c `mod` n == 0 = dropEvery' xs n (c + 1)
+        | otherwise = [x] ++ dropEvery' xs n (c + 1)
 
 -- Problem 17
 split :: [a] -> Int -> ([a], [a])
