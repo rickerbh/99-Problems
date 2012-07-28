@@ -126,3 +126,75 @@ range x y
   | x > y = error "First operand must be less than or equal to the second"
   | x == y = [y]
   | otherwise = [x] ++ range (x + 1) y
+  
+-- Problem 23
+-- No idea how to use libraries. Have to come back to this
+
+-- Problem 24
+-- No idea how to use libraries. Have to come back to this
+
+-- Problem 25
+-- No idea how to use libraries. Have to come back to this
+
+-- Problem 26
+
+-- Problem 27
+
+-- Problem 28
+-- part 1 - implemented via quicksort - works, but doesn't retain original order
+lsort :: [[a]] -> [[a]]
+lsort [] = []
+lsort (x:xs) = 
+  let smallerSorted = lsort [a | a <- xs, length a <= length x]
+      biggerSorted = lsort [a | a <- xs, length a > length x]
+  in smallerSorted ++ [x] ++ biggerSorted
+
+-- part 2
+
+-- Problem 31
+
+-- Problem 32
+
+-- Problem 33
+
+-- Problem 34
+
+-- Problem 35
+
+-- Problem 36
+
+-- Problem 37
+
+-- Problem 38
+
+-- Problem 39
+
+-- Problem 40
+
+-- Problem 41
+
+-- Problem 46
+
+-- Problem 47
+
+-- Problem 48
+
+-- Problem 49
+
+-- Problem 50
+
+-- Problem 54A
+
+-- Problem 55
+
+-- Problem 56
+
+-- Problem 57
+
+-- Problem 58
+
+-- Problem 59
+
+-- Problem 60
+
+ 
