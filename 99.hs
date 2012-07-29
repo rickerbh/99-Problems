@@ -76,7 +76,13 @@ encodeModified [] = error "Can't encode an empty list"
 encodeModified xs = [if n > 1 then (Multiple n x) else (Single x) | (n, x) <- encode xs]
 
 -- Problem 12
--- I'll have to learn how to define my own datatype before I tackle this.
+decodeModified :: [ListItem a] -> [a]
+decodeModified [] = []
+decodeModified ((Single x):xs) = [x] ++ decodeModified xs
+decodeModified ((Multiple n x):xs) = decodedMultiple n x ++ decodeModified xs
+    where
+      decodedMultiple 1 x = [x]
+      decodedMultiple n x = [x] ++ decodedMultiple (n - 1) x
 
 -- Problem 13
 -- I'll have to learn how to define my own datatype before I tackle this.
