@@ -85,8 +85,13 @@ decodeModified ((Multiple n x):xs) = decodedMultiple n x ++ decodeModified xs
       decodedMultiple n x = [x] ++ decodedMultiple (n - 1) x
 
 -- Problem 13
--- I'll have to learn how to define my own datatype before I tackle this.
-
+encodeDirect :: (Eq a) => [a] -> [ListItem a]
+encodeDirect [] = []
+encodeDirect (x:xs) = if x == head xs then countMultiples 2 xs else [Single x] ++ encodeDirect xs
+    where
+      countMultiples n (x:[]) = [Multiple n x]
+      countMultiples n (x:xs) = if x == head xs then countMultiples (n + 1) xs else [Multiple n x] ++ encodeDirect xs
+  
 -- Problem 14
 dupli :: [a] -> [a]
 dupli [] = []
