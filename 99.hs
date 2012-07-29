@@ -204,6 +204,9 @@ coprime :: Int -> Int -> Bool
 coprime a b = myGCD a b == 1
 
 -- Problem 34
+totient :: Int -> Int
+totient 1 = 1
+totient n = sum [1 | x <- [1..(n - 1)], coprime n x]
 
 -- Problem 35
 
