@@ -196,6 +196,8 @@ isPrime n = isPrime' n 2
         | otherwise = isPrime' n (c + 1)
 
 -- Problem 32
+myGCD :: Int -> Int -> Int
+myGCD a b = if b == 0 then abs a else myGCD b (a `mod` b)
 
 -- Problem 33
 
