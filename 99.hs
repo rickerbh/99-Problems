@@ -69,7 +69,11 @@ encode [] = error "Can't encode an empty list"
 encode xs = [(n, y) | (y:ys) <- (pack xs), let n = 1 + (length ys)]
 
 -- Problem 11
--- I'll have to learn how to define my own datatype before I tackle this.
+data ListItem a = Single a | Multiple Int a
+    deriving (Show)
+encodeModified :: (Eq a) => [a] -> [ListItem a]
+encodeModified [] = error "Can't encode an empty list"
+encodeModified xs = [if n > 1 then (Multiple n x) else (Single x) | (n, x) <- encode xs]
 
 -- Problem 12
 -- I'll have to learn how to define my own datatype before I tackle this.
