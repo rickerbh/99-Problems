@@ -185,6 +185,15 @@ lsort (x:xs) =
 -- part 2
 
 -- Problem 31
+-- Not very efficient, but it'll do for now...
+isPrime :: Int -> Bool
+isPrime 1 = True
+isPrime n = isPrime' n 2
+    where
+      isPrime' n c 
+        | n == c = True
+        | n `mod` c == 0 = False
+        | otherwise = isPrime' n (c + 1)
 
 -- Problem 32
 
