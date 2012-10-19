@@ -227,8 +227,11 @@ prime_factors_mult n = [(x, n) | (n, x) <- encode (primeFactors n)]
 -- Problem 37
 
 -- Problem 38
+-- no solution required
 
 -- Problem 39
+primesR :: Int -> Int -> [Int]
+primesR x y = [n | n <- [x..y], isPrime n]
 
 -- Problem 40
 
