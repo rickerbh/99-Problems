@@ -235,6 +235,7 @@ primesR :: Int -> Int -> [Int]
 primesR x y = [n | n <- [x..y], isPrime n]
 
 -- Problem 40
+-- Inefficient, but it works
 goldbach :: Int -> (Int, Int)
 goldbach n = goldbach' n (primesR 2 n) (primesR 2 n)
     where
@@ -246,6 +247,10 @@ goldbach n = goldbach' n (primesR 2 n) (primesR 2 n)
         | otherwise = goldbach' n xs (tail ys)
 
 -- Problem 41
+goldbachList :: Int -> Int -> [(Int, Int)]
+goldbachList x y = [goldbach n | n <- [x..y], n `mod` 2 == 0]
+
+goldbachList' x y n = [(a, b) | (a, b) <- goldbachList x y, a > n, b > n]
 
 -- Problem 46
 
