@@ -218,6 +218,7 @@ primeFactors n = primeFactors' n 2
         | n `mod` c == 0 = [c] ++ primeFactors' (n `div` c) c
         | otherwise = primeFactors' n (nextPrime c)
 
+nextPrime :: Int -> Int
 nextPrime n = if isPrime (n + 1) then (n + 1) else nextPrime (n + 1)
 
 -- Problem 36
@@ -234,6 +235,15 @@ primesR :: Int -> Int -> [Int]
 primesR x y = [n | n <- [x..y], isPrime n]
 
 -- Problem 40
+goldbach :: Int -> (Int, Int)
+goldbach n = goldbach' n (primesR 2 n) (primesR 2 n)
+    where
+      goldbach' n xs ys
+        | n `mod` 2 == 1 = error "Only even numbers sorry."
+        | n < 4 = error "Number must be at least 4."
+        | ys == [] = goldbach' n (tail xs) (primesR 2 n)
+        | head xs + head ys == n = (head xs, head ys)
+        | otherwise = goldbach' n xs (tail ys)
 
 -- Problem 41
 
