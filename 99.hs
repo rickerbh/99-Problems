@@ -221,7 +221,9 @@ primeFactors n = primeFactors' n 2
 nextPrime n = if isPrime (n + 1) then (n + 1) else nextPrime (n + 1)
 
 -- Problem 36
-
+prime_factors_mult :: Int -> [(Int, Int)]
+prime_factors_mult n = [(x, n) | (n, x) <- encode (primeFactors n)]
+  
 -- Problem 37
 
 -- Problem 38
