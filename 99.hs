@@ -209,6 +209,16 @@ totient 1 = 1
 totient n = sum [1 | x <- [1..(n - 1)], coprime n x]
 
 -- Problem 35
+primeFactors :: Int -> [Int]
+primeFactors n = primeFactors' n 2
+    where
+      primeFactors' n c
+        | isPrime n = [n]
+        | n == c = []
+        | n `mod` c == 0 = [c] ++ primeFactors' (n `div` c) c
+        | otherwise = primeFactors' n (nextPrime c)
+
+nextPrime n = if isPrime (n + 1) then (n + 1) else nextPrime (n + 1)
 
 -- Problem 36
 
