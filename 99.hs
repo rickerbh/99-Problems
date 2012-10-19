@@ -280,4 +280,23 @@ gray n = ["0" ++ n | n <- gray (n - 1)] ++ ["1" ++ n | n <- reverse (gray (n - 1
 
 -- Problem 60
 
- 
+-- Problem 95
+fullWords :: Int -> String
+fullWords n = fullWords' (show n)
+    where 
+      fullWords' (x:xs)
+        | length (x:xs) == 1 = numberToString x
+        | otherwise = numberToString x ++ "-" ++ fullWords' xs
+
+numberToString :: Char -> String
+numberToString c
+    | c == '0' = "zero"
+    | c == '1' = "one"
+    | c == '2' = "two"
+    | c == '3' = "three"
+    | c == '4' = "four"
+    | c == '5' = "five"
+    | c == '6' = "six"
+    | c == '7' = "seven"
+    | c == '8' = "eight"
+    | c == '9' = "nine"
