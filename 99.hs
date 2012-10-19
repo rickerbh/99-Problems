@@ -259,6 +259,10 @@ goldbachList' x y n = [(a, b) | (a, b) <- goldbachList x y, a > n, b > n]
 -- Problem 48
 
 -- Problem 49
+-- http://en.wikipedia.org/wiki/Gray_code
+gray :: Int -> [[Char]]
+gray 1 = ["0", "1"]
+gray n = ["0" ++ n | n <- gray (n - 1)] ++ ["1" ++ n | n <- reverse (gray (n - 1))]
 
 -- Problem 50
 
