@@ -300,3 +300,46 @@ numberToString c
     | c == '7' = "seven"
     | c == '8' = "eight"
     | c == '9' = "nine"
+
+-- Problem 96
+isCharacterInString :: Char -> String -> Bool
+isCharacterInString _ [] = False
+isCharacterInString c (x:xs)
+    | c == x = True
+    | otherwise = isCharacterInString c xs
+
+isUpperAlpha :: Char -> Bool
+isUpperAlpha c = isCharacterInString c ['A'..'Z']
+
+isLowerAlpha :: Char -> Bool
+isLowerAlpha c = isCharacterInString c ['a'..'z']
+
+isAlpha :: Char -> Bool
+isAlpha c = isUpperAlpha c || isLowerAlpha c
+
+isDigit :: Char -> Bool
+isDigit c = isCharacterInString c ['0'..'9']
+
+isHyphen :: Char -> Bool
+isHyphen '-' = True
+isHyphen _ = False
+
+isNonHyphen :: Char -> Bool
+isNonHyphen c = isAlpha c || isDigit c
+
+identifier :: String -> Bool
+identifier [] = False
+identifier [x]
+    | isAlpha x = True
+    | otherwise = False
+-- Need a special case for the first character to ensure it's a letter
+identifier (x:xs)
+    | isAlpha x && isHyphen (head xs) = identifier' (tail xs)
+    | isAlpha x = identifier' xs
+    | otherwise = False
+identifier' [] = False
+identifier' [x] = identifier [x]
+identifier' (x:xs)
+    | isHyphen x = False
+    | isNonHyphen x && isNonHyphen (head xs) = identifier' xs
+    | isNonHyphen x && isHyphen (head xs) = identifier' (tail xs)
