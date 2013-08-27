@@ -1,3 +1,5 @@
+import System.Random
+
 -- @rickerbh's solutions to the Haskell 99 questions
 -- http://www.haskell.org/haskellwiki/99_questions
 
@@ -161,6 +163,14 @@ range x y
   | otherwise = [x] ++ range (x + 1) y
   
 -- Problem 23
+--rnd_select :: [a] -> Int -> [a]
+--rnd_select _ 0 = []
+--rnd_select xs n = [(generateRandom xs)]
+--    where
+--      choose :: (Eq (IO Int)) => [a] -> IO Int -> a
+--      choose (x:xs) n = if n == 1 then x else choose xs (n - 1)
+--      generateRandom xs = randomRIO (1, length xs)
+
 -- No idea how to use libraries. Have to come back to this
 
 -- Problem 24
@@ -253,6 +263,37 @@ goldbachList x y = [goldbach n | n <- [x..y], n `mod` 2 == 0]
 goldbachList' x y n = [(a, b) | (a, b) <- goldbachList x y, a > n, b > n]
 
 -- Problem 46
+and' :: Bool -> Bool -> Bool
+and' True True = True
+and' _ _ = False
+
+or' :: Bool -> Bool -> Bool
+or' True _ = True
+or' _ True = True
+or' _ _ = False
+
+not' :: Bool -> Bool
+not' True = False
+not' _ = True
+
+nand' :: Bool -> Bool -> Bool
+nand' a b = not' (and' a b)
+
+nor' :: Bool -> Bool -> Bool
+nor' a b = not' (or' a b)
+
+xor' :: Bool -> Bool -> Bool
+xor' True False = True
+xor' False True = True
+xor' _ _ = False
+
+impl' :: Bool -> Bool -> Bool
+impl' a b = (not' a) `or'` b
+
+equ' :: Bool -> Bool -> Bool
+equ' True True = True
+equ' False False = True
+equ' _ _ = False
 
 -- Problem 47
 
